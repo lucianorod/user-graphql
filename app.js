@@ -8,10 +8,11 @@ const rootValue = require('./graphql/resolvers/index');
 const schema = buildSchema(typeDefs.default);
 const resolvers = rootValue.default;
 
+
 const app = express();
 app.use('/graphql', graphqlHTTP({
   schema,
-  resolvers,
+  rootValue: resolvers,
   graphiql: true,
 }));
 
